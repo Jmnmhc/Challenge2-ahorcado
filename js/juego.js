@@ -34,16 +34,12 @@ if (!juegoTerminado){
         esValida=true;
         if (teclasPresionadas.length == 0) {                        //si no hay letras previas, ingresa la primera
             teclasPresionadas = teclasPresionadas + ingresoActual;
-            console.log("entro al primero");
 
-            //CON ESTE BUCLE RECORRO LAS LETRAS, LO USO NUEVAMENTE, NECESITO FUNCION
            for(var i = 0; i < split.length; i++){
 
                     if (split[i] == ingresoActual){
-                        console.log("letra correcta!");
                         huboAcierto = true;
                         letrasAcertadas[i] = ingresoActual;
-                        console.log("LETRAS ACERTADAS" + letrasAcertadas[i]);
                         refrescarLienzo(cantidad, x, y);
                         dibujarAhorcado(errores, x, y, pulsada);
                         mostrarErradas(letrasErradas, x, y);
@@ -51,12 +47,11 @@ if (!juegoTerminado){
                     };
                 };
 
+
         }else{                                                      //al haber letras previas, controla
-            console.log("entro al else");
             for (var i = 0; i < teclasPresionadas.length; i++){     //loop para recorrer el array de letras
                 if (teclasPresionadas[i] == ingresoActual){            //realizo la busqueda de coincidencias letra por letras 
                     alert("error, la tecla "+ teclasPresionadas[i] + " ya había sido elegida");//aviso si ya la habian ingresado
-                    console.log("entro al segudno if");
                     estaba=true;                                    //modifico la variable de control a VERDADERO
                     esValida = false;
                     break;                                          //escapo del loop
@@ -72,22 +67,16 @@ if (!juegoTerminado){
 
     if (!estaba){                                           //si el contron es FALSO es porque la letra no estaba previamente
         teclasPresionadas = teclasPresionadas + ingresoActual; //entonces la agrego a la lista de letras
+        
+        
         for(var i = 0; i < split.length; i++){
 
             if (split[i] == ingresoActual){
-                console.log("letra correcta!");
                 huboAcierto = true;
                 letrasAcertadas[i] = ingresoActual;
-                console.log("LETRAS ACERTADAS" + letrasAcertadas[i]);
                 refrescarLienzo(cantidad, x, y);
                 dibujarAhorcado(errores, x, y, pulsada);
                 mostrarErradas(letrasErradas, x, y);
-
-                //aca tengo que modificar el arreglo de los guiones y llamar a la funcion
-                //para que los dibuje nuevamente, agregando la letra real en el lugar correspondiente
-                //entonces, una vez terminado, tengo que dejar de dibujar las letras correctas
-                //(pero no de almacenarlas, porque me van a servir para comparar y finalizar)
-
 
             };
         };
@@ -96,8 +85,6 @@ if (!juegoTerminado){
     if (!huboAcierto && esValida){
         errores++;
         letrasErradas.push(ingresoActual);
-        console.log("error numero " + errores);
-        console.log("las letras erradas son: " + letrasErradas);
         dibujarAhorcado(errores, x, y, pulsada);
         mostrarErradas(letrasErradas, x, y);        
 
@@ -112,32 +99,17 @@ if (!juegoTerminado){
             if (letrasAcertadas[i] != "I"){
                 var incrementoDeX = x + 35*i
             }else{var incrementoDeX = x + (35*i) +9}
-
-
             dibujarAciertos(letrasAcertadas[i], incrementoDeX, y)
-
         }
         palabraSecreta(split, letrasAcertadas);
 
-        //dibujarAciertos(cadenaAcertadas, x, y);
-        
-        
-        
-
-        console.log("tengo que coincidor esto: " + palabraElegida);
-        console.log("con esto: "+ cadenaControlCierre);
-
         if (palabraElegida == cadenaControlCierre){
             juegoGanado(x, y);
-            console.log("entro al if de FIN DEL JUEGO")
             juegoTerminado = true;    //VARIABLE DE CONTROL DE JUEGO ACTIVO
+            
         }  
     }
     });
-
-//CREO UN ARRAY CON LA MISMA CANTIDAD DE GUIONES QUE LETRAS EN LA SECRETA
-
-
 
 function palabraSecreta (palabra){  
 var palabraEnmascarada = ""
@@ -145,8 +117,6 @@ var palabraEnmascarada = ""
         palabraEnmascarada = palabraEnmascarada + "_ ";
     };
 
-console.log("palabraEnmascarada se vería así: " + palabraEnmascarada);
-console.log("palabraEnmascarada tiene un total de " + palabraEnmascarada.length)
 return (palabraEnmascarada);  //devuelvo la palabra enmascarada (el mismo length que la recibida)
 };
 
@@ -156,3 +126,17 @@ function randomPalabras (){
     return palabraAlAzar;    
 };
 
+function ingresaAciertos (split, ingresoActual){
+
+    for(var i = 0; i < split.length; i++){
+
+        if (split[i] == ingresoActual){
+            letrasAcertadas[i] = ingresoActual;
+            refrescarLienzo(cantidad, x, y);
+            dibujarAhorcado(errores, x, y, pulsada);
+            mostrarErradas(letrasErradas, x, y);
+
+        };
+    };
+
+}

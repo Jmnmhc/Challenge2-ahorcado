@@ -223,7 +223,6 @@ function dibujarTexto(cantidad, x, y){
     for (var i = 0; i < cantidad; i++){
         dibujarGuion(inicioX, inicioY);
         inicioX = inicioX + 35;
-        console.log("esto seria laX de los guiones: " + inicioX)
 
     }
 

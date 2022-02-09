@@ -8,6 +8,8 @@ var empezar = document.querySelector("#iniciar-juego");
 //el evento click del boton  inicializa la variable "errores"
 //dibuja la base de la orca, la palabra secreta y determina el canvas y tipo de pincel
 empezar.addEventListener("click",function(event){
+
+    pantalla.focus
     juegoTerminado = false;
     pulsada = false;
     errores = 0;
