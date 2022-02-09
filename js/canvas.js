@@ -14,13 +14,16 @@ empezar.addEventListener("click",function(event){
     cadenaAcertadas = "";
     cadenaControlCierre = "";
     letrasAcertadas=[];
-
+   
+    
 
     palabraElegida = randomPalabras();
     split = palabraElegida.split('');    
     teclasPresionadas = []; 
     letrasErradas = [];
     console.log(split);
+
+    cantidad = split.length
 
     for (var i = 0; i < split.length; i++){
         letrasAcertadas[i] = "  ";
@@ -40,7 +43,7 @@ empezar.addEventListener("click",function(event){
 
     dibujarTexto(palabraSecreta(split), x, y);
 */
-        refrescarLienzo(split, x, y);
+        refrescarLienzo(cantidad, x, y);
         
 });
 

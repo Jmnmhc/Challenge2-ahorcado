@@ -2,6 +2,10 @@ var listaPalabras = ["CARAVANA", "ANUNCIO", "PROBLEMAS", "CIRCULAR", "ORGANIZACI
 var palabraElegida = randomPalabras();
 var split = palabraElegida.split('');
 
+
+var cantidad = split.length
+
+
 console.log(split);
 
 var teclasPresionadas = [];                         //en este array vacio van a ir las teclas presionadas
@@ -36,15 +40,11 @@ if (!juegoTerminado){
            for(var i = 0; i < split.length; i++){
 
                     if (split[i] == ingresoActual){
-                        //console.log("letra correcta!");
-                        //huboAcierto = true;
-                        //letrasAcertadas[i] = ingresoActual;
-                        //console.log("LETRAS ACERTADAS" + letrasAcertadas);
                         console.log("letra correcta!");
                         huboAcierto = true;
                         letrasAcertadas[i] = ingresoActual;
                         console.log("LETRAS ACERTADAS" + letrasAcertadas[i]);
-                        refrescarLienzo(split, x, y);
+                        refrescarLienzo(cantidad, x, y);
                         dibujarAhorcado(errores, x, y, pulsada);
                         mostrarErradas(letrasErradas, x, y);
         
@@ -79,7 +79,7 @@ if (!juegoTerminado){
                 huboAcierto = true;
                 letrasAcertadas[i] = ingresoActual;
                 console.log("LETRAS ACERTADAS" + letrasAcertadas[i]);
-                refrescarLienzo(split, x, y);
+                refrescarLienzo(cantidad, x, y);
                 dibujarAhorcado(errores, x, y, pulsada);
                 mostrarErradas(letrasErradas, x, y);
 
@@ -105,12 +105,25 @@ if (!juegoTerminado){
         var cadenaAcertadas = "";
         var cadenaControlCierre = "";
         for (i=0; i<letrasAcertadas.length;i++){
+            
             cadenaAcertadas = cadenaAcertadas + letrasAcertadas[i] + " ";
             cadenaControlCierre = cadenaControlCierre + letrasAcertadas[i];
-   
+            
+            if (letrasAcertadas[i] != "I"){
+                var incrementoDeX = x + 35*i
+            }else{var incrementoDeX = x + (35*i) +9}
+
+
+            dibujarAciertos(letrasAcertadas[i], incrementoDeX, y)
+
         }
-        palabraSecreta(split);
-        dibujarAciertos(cadenaAcertadas, x, y);
+        palabraSecreta(split, letrasAcertadas);
+
+        //dibujarAciertos(cadenaAcertadas, x, y);
+        
+        
+        
+
         console.log("tengo que coincidor esto: " + palabraElegida);
         console.log("con esto: "+ cadenaControlCierre);
 
@@ -123,6 +136,9 @@ if (!juegoTerminado){
     });
 
 //CREO UN ARRAY CON LA MISMA CANTIDAD DE GUIONES QUE LETRAS EN LA SECRETA
+
+
+
 function palabraSecreta (palabra){  
 var palabraEnmascarada = ""
     for (var i = 0; i < palabra.length; i++){
@@ -133,7 +149,6 @@ console.log("palabraEnmascarada se vería así: " + palabraEnmascarada);
 console.log("palabraEnmascarada tiene un total de " + palabraEnmascarada.length)
 return (palabraEnmascarada);  //devuelvo la palabra enmascarada (el mismo length que la recibida)
 };
-
 
 //con esta funcion puedo elegir las palabras al azar, la devuelvo llamando a "randomPalabras"
 function randomPalabras (){

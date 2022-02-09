@@ -103,7 +103,7 @@ function dibujarBrazoIzquierdo(x, y){
     pincel.lineTo(inicioX-75, inicioY-75);
     pincel.stroke();
 };
-
+/*
 function dibujarTexto(texto, x, y){
     var inicioX = x+75;         //el punto mas a la derecha del brazo
     var inicioY = y+375;        //es el punto mas bajo de la base
@@ -119,9 +119,9 @@ function dibujarTexto(texto, x, y){
     pincel.fillText(palabra,inicioX, inicioY,maximo);
     pincel.strokeText(palabra, inicioX, inicioY,maximo);
     
-   // console.log(palabra);
+    console.log("PALABRA, EN PERSONA.JS ES " + palabra);
 }
-
+*/
 function juegoPerdido(x, y){
     var inicioX = x+100;         //el punto mas a la derecha del brazo
     var inicioY = y+175;        //es el punto mas bajo de la base
@@ -194,7 +194,7 @@ function dibujarAciertos(texto, x, y){
     
 }
 
-function refrescarLienzo(split, x, y){
+function refrescarLienzo(cantidad, x, y){
     pincel.fillStyle = "lightgrey";
     pincel.fillRect (0, 0, 800, 1200);
     pincel.lineWidth=5;
@@ -202,8 +202,47 @@ function refrescarLienzo(split, x, y){
     pincel.strokeStyle = "black";
 
     baseHorca(x, y);
+    
 
-    dibujarTexto(palabraSecreta(split), x, y);
+
+    //dibujarTexto(palabraSecreta(split), x, y);
+    dibujarTexto(cantidad, x, y);
     
 
 };
+
+function dibujarTexto(cantidad, x, y){
+    var inicioX = x+75;         //el punto mas a la derecha del brazo
+    var inicioY = y+375;        //es el punto mas bajo de la base
+	var maximo = 1200-inicioX;  //1200 es el limite del canvas, asi que el punto maximo del texto es el 
+
+    pincel.lineWidth=5;
+    pincel.fillStyle='black';
+    pincel.strokeStyle = "black";
+        console.log("en la funcion, el lenght de palabra es = "+cantidad)                    
+    for (var i = 0; i < cantidad; i++){
+        dibujarGuion(inicioX, inicioY);
+        inicioX = inicioX + 35;
+        console.log("esto seria laX de los guiones: " + inicioX)
+
+    }
+
+}
+
+
+function dibujarGuion(x, y){
+
+    var inicioX = x;
+    var inicioY = y;
+
+    dibujarLineas (inicioX, inicioY)  
+    pincel.lineTo(inicioX +25, inicioY);
+    pincel.stroke();
+};
+
+
+
+
+
+
+
