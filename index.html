@@ -8,35 +8,52 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
+    <div id="logo">
+      <img src="imagenes/logo de Alura.png" alt="Logo ALURA">
+    </div>
+
     <div style="text-align:center; margin: 50px 0px;">
       <h1 class="titulo">Ahorcado</h1>
-      <button class="btn" id="iniciar-juego">INICIAR JUEGO</button>
     </div>
-    <div style="text-align:center">
-      <input class="text-input" type="text" id="input-nueva-palabra" placeholder="Escriba una nueva palabra">
-      <button class="btn" id="nueva-palabra">AGREGAR PALABRA</button> 
-    </div>
-    <div style="text-align:center;">
+
+    <table align="center">
+      <tr>
+        <td></td>
+        <td></td>
+        <td><input class="text-input" type="text" id="input-nueva-palabra" placeholder="Escriba una nueva palabra">  </td>
+      </tr>
+      
+      <tr>
+        <td><button class="btn" id="iniciar-juego">
+          <img src = "imagenes/boton nuevo juego.png">
+        </button></td></td>
+        <td></td>
+        <td><button class="btn" id="nueva-palabra">
+          <img src = "imagenes/boton agregar palabra.png">
+      </button></td>
+      </tr>
+      </table>
+
+
+
+    <div style="text-align:right;">
       <canvas id="ahorcado" height="800px" width="1200px"></canvas>
     </div>
 
+
+
+   
     <div id="content-footer" class="bg-5">
       <footer>
       
       <ul>
-      <li><a href="https://www.linkedin.com/in/juan-manuel-herrero-carr%C3%A9-1bab1b205//">Juan Manuel Herrero Carré</a></li>
+      <li><a href="https://www.linkedin.com/in/juan-manuel-herrero-carr%C3%A9-1bab1b205//">desarrollado para el Challenge 2 de programación logica de ORACLE NEXT EDUCATION por Juan Manuel Herrero Carré</a></li>
       <li><a href="https://github.com/Jmnmhc?tab=repositories">otros proyectos</a></li>
       </ul>
       
       </footer>
       </div>
-
-
-
-
-
-
-
 
     <script type="text/javascript" src="js/canvas.js"></script>
     <script type="text/javascript" src="js/juego.js"></script>
