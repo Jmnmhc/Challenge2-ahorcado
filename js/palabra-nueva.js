@@ -43,7 +43,6 @@ function validarTexto(texto){
             return true;
         }
         else{
-            //alert("No se pueden ingresar numeros ni acentos");
             return false;
         }
     }

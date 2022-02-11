@@ -1,30 +1,23 @@
 const x = 300;
 const y = 200;
 
-var pantalla = document.querySelector("#ahorcado"); //capturo el canvas
+var pantalla = document.querySelector("#ahorcado");
 var pincel = pantalla.getContext("2d");
 var empezar = document.querySelector("#iniciar-juego");
 
-//el evento click del boton  inicializa la variable "errores"
-//dibuja la base de la orca, la palabra secreta y determina el canvas y tipo de pincel
 empezar.addEventListener("click",function(event){
-
-    
+ 
     juegoTerminado = false;
     pulsada = false;
     errores = 0;
     cadenaAcertadas = "";
     cadenaControlCierre = "";
     letrasAcertadas=[];
-   
-    
-
     palabraElegida = randomPalabras();
     split = palabraElegida.split('');    
     teclasPresionadas = []; 
     letrasErradas = [];
     console.log(split);
-
     cantidad = split.length
 
     for (var i = 0; i < split.length; i++){
@@ -32,25 +25,10 @@ empezar.addEventListener("click",function(event){
 
     };
 
-
-/*
-
-    pincel.fillStyle = "lightgrey";
-    pincel.fillRect (0, 0, 800, 1200);
-    pincel.lineWidth=5;
-    pincel.fillStyle='black';
-    pincel.strokeStyle = "black";
-
-    baseHorca(x, y);
-
-    dibujarTexto(palabraSecreta(split), x, y);
-*/
-        refrescarLienzo(cantidad, x, y);
+    refrescarLienzo(cantidad, x, y);
         
 });
 
-//la funcion dibujar ahorcado recibe la cantidad de errores, dibuja la parte del cuerpo correspondiente
-//e incrementa la variable errores para ya saber, cual parte dibujar la proxima vez
 function dibujarAhorcado (errores,x,y, pulsada){
 
     if (errores == 1 && pulsada){

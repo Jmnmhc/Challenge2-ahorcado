@@ -1,38 +1,26 @@
 var listaPalabras = ["CARAVANA", "ANUNCIO", "PROBLEMAS", "CIRCULAR", "ORGANIZACION", "COLORANTE", "PALETA", "VACACIONES"];
 var palabraElegida = randomPalabras();
 var split = palabraElegida.split('');
-
-
 var cantidad = split.length
-
-
-console.log(split);
-
-var teclasPresionadas = [];                         //en este array vacio van a ir las teclas presionadas
+var teclasPresionadas = [];
 var letrasErradas = [];
 var letrasAcertadas = [];
 var errores = 0;
 var pulsada = false;
 var juegoTerminado = false;
 
-document.addEventListener("keypress", (evento) => {              //leo la tecla presionada
+document.addEventListener("keypress", (evento) => {
 if (!juegoTerminado){    
-    var huboAcierto = false;                                     //Booleanos de control 
+    var huboAcierto = false;
     var estaba = true;
     var esValida = false;     
-    var ingresoActual = evento.key;                             //paso a variable la tecla presionada
+    var ingresoActual = evento.key;
 
     pulsada = true;    
 
-    console.log("cantidad de teclas presionadas " + teclasPresionadas.length);
-
-//PRIMERO EVALUO QUE LAS LETRAS SEAN MAYUSCULAS, CASO CONTRARIO AVISO CON UN ALERT
-//EN EL IF DE ADENTRO, EN PRINCIPIO HAGO UNA NUEVA CADENA, CONTENIENDO LAS LETRAS INGRESADAS
-//CON ESAS LETRAS PUEDO COMPARAR LUEGO SI CORRESPONDEN A LAS BUSCADAS
-
     if ((evento.charCode >64 && evento.charCode < 91) || evento.charCode == 209){
         esValida=true;
-        if (teclasPresionadas.length == 0) {                        //si no hay letras previas, ingresa la primera
+        if (teclasPresionadas.length == 0) {
             teclasPresionadas = teclasPresionadas + ingresoActual;
 
            for(var i = 0; i < split.length; i++){
@@ -47,17 +35,16 @@ if (!juegoTerminado){
                     };
                 };
 
-
-        }else{                                                      //al haber letras previas, controla
-            for (var i = 0; i < teclasPresionadas.length; i++){     //loop para recorrer el array de letras
-                if (teclasPresionadas[i] == ingresoActual){            //realizo la busqueda de coincidencias letra por letras 
-                    alert("error, la tecla "+ teclasPresionadas[i] + " ya había sido elegida");//aviso si ya la habian ingresado
-                    estaba=true;                                    //modifico la variable de control a VERDADERO
+        }else{
+            for (var i = 0; i < teclasPresionadas.length; i++){
+                if (teclasPresionadas[i] == ingresoActual){
+                    alert("error, la tecla "+ teclasPresionadas[i] + " ya había sido elegida");
+                    estaba=true;
                     esValida = false;
-                    break;                                          //escapo del loop
+                    break;
 
-                }else{                                              //si no entro al IF, es porque no estaba la letra
-                    estaba=false;                                   //entonces modifico a FALSO el control
+                }else{
+                    estaba=false;
                     console.log("entro al segundo else");
                 };
             };
@@ -65,9 +52,8 @@ if (!juegoTerminado){
         };
     }else{alert("error, solamente se aceptan letras mayúsculas (incluída la Ñ)")}
 
-    if (!estaba){                                           //si el contron es FALSO es porque la letra no estaba previamente
-        teclasPresionadas = teclasPresionadas + ingresoActual; //entonces la agrego a la lista de letras
-        
+    if (!estaba){
+        teclasPresionadas = teclasPresionadas + ingresoActual;
         
         for(var i = 0; i < split.length; i++){
 
@@ -105,8 +91,7 @@ if (!juegoTerminado){
 
         if (palabraElegida == cadenaControlCierre){
             juegoGanado(x, y);
-            juegoTerminado = true;    //VARIABLE DE CONTROL DE JUEGO ACTIVO
-            
+            juegoTerminado = true;
         }  
     }
     });
@@ -117,10 +102,9 @@ var palabraEnmascarada = ""
         palabraEnmascarada = palabraEnmascarada + "_ ";
     };
 
-return (palabraEnmascarada);  //devuelvo la palabra enmascarada (el mismo length que la recibida)
+return (palabraEnmascarada);
 };
 
-//con esta funcion puedo elegir las palabras al azar, la devuelvo llamando a "randomPalabras"
 function randomPalabras (){
     var palabraAlAzar = listaPalabras[Math.floor(Math.random()*listaPalabras.length)];
     return palabraAlAzar;    

@@ -103,28 +103,10 @@ function dibujarBrazoIzquierdo(x, y){
     pincel.lineTo(inicioX-75, inicioY-75);
     pincel.stroke();
 };
-/*
-function dibujarTexto(texto, x, y){
-    var inicioX = x+75;         //el punto mas a la derecha del brazo
-    var inicioY = y+375;        //es el punto mas bajo de la base
-    var palabra = texto;        //la palabra aleatoria recibida como parametro
-	var maximo = 1200-inicioX;   //1200 es el limite del canvas, asi que el punto maximo del texto es el 
-                                //total del canvas menos el punto de inicio
 
-    pincel.lineWidth=1;
-    pincel.fillStyle='black';
-    pincel.strokeStyle = "black";
-                            
-    pincel.font="30pt Arial";   //fuente y tamaño
-    pincel.fillText(palabra,inicioX, inicioY,maximo);
-    pincel.strokeText(palabra, inicioX, inicioY,maximo);
-    
-    console.log("PALABRA, EN PERSONA.JS ES " + palabra);
-}
-*/
 function juegoPerdido(x, y){
-    var inicioX = x+100;         //el punto mas a la derecha del brazo
-    var inicioY = y+175;        //es el punto mas bajo de la base
+    var inicioX = x+100;
+    var inicioY = y+175;
     var frase = "juego perdido";
 
     pincel.lineWidth=1;
@@ -138,8 +120,8 @@ function juegoPerdido(x, y){
 }
 
 function juegoGanado(x, y){
-    var inicioX = x+100;         //el punto mas a la derecha del brazo
-    var inicioY = y+175;        //es el punto mas bajo de la base
+    var inicioX = x+100;
+    var inicioY = y+175;
     var frase = "juego ganado!!!";
 
     pincel.lineWidth=1;
@@ -154,8 +136,8 @@ function juegoGanado(x, y){
 
 function mostrarErradas(letras, x, y){
     
-    var inicioX = x+100;         //el punto mas a la derecha del brazo
-    var inicioY = y+275;        //es el punto mas bajo de la base
+    var inicioX = x+100;
+    var inicioY = y+275;
     var frase = letras;
 
     pincel.lineWidth=1;
@@ -178,17 +160,16 @@ function dibujarLineas (coordenadaX, coordenadaY){
 }
 
 function dibujarAciertos(texto, x, y){
-    var inicioX = x+75;         //el punto mas a la derecha del brazo
-    var inicioY = y+370;        //es el punto mas bajo de la base
-    var palabra = texto;        //la palabra aleatoria recibida como parametro
-	var maximo = 1200-inicioX;   //1200 es el limite del canvas, asi que el punto maximo del texto es el 
-                                //total del canvas menos el punto de inicio
+    var inicioX = x+75;
+    var inicioY = y+370;
+    var palabra = texto;
+	var maximo = 1200-inicioX;
 
     pincel.lineWidth=1;
     pincel.fillStyle='black';
     pincel.strokeStyle = "black";
                             
-    pincel.font="25pt Arial";   //fuente y tamaño
+    pincel.font="25pt Arial";
     pincel.fillText(palabra,inicioX, inicioY,maximo);
     pincel.strokeText(palabra, inicioX, inicioY,maximo);
     
@@ -202,20 +183,16 @@ function refrescarLienzo(cantidad, x, y){
     pincel.strokeStyle = "black";
 
     baseHorca(x, y);
-    
-
-
-    //dibujarTexto(palabraSecreta(split), x, y);
+  
     dibujarTexto(cantidad, x, y);
     
-
 };
 
 function dibujarTexto(cantidad, x, y){
-    var inicioX = x+75;         //el punto mas a la derecha del brazo
-    var inicioY = y+375;        //es el punto mas bajo de la base
-	var maximo = 1200-inicioX;  //1200 es el limite del canvas, asi que el punto maximo del texto es el 
-
+    var inicioX = x+75;
+    var inicioY = y+375;
+	var maximo = 1200-inicioX;
+    
     pincel.lineWidth=5;
     pincel.fillStyle='black';
     pincel.strokeStyle = "black";
@@ -228,9 +205,7 @@ function dibujarTexto(cantidad, x, y){
 
 }
 
-
 function dibujarGuion(x, y){
-
     var inicioX = x;
     var inicioY = y;
 
@@ -238,10 +213,3 @@ function dibujarGuion(x, y){
     pincel.lineTo(inicioX +25, inicioY);
     pincel.stroke();
 };
-
-
-
-
-
-
-
